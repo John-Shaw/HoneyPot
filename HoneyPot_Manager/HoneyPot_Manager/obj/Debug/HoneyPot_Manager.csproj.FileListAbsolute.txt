@@ -8,3 +8,13 @@ c:\users\johnny\documents\visual studio 2013\Projects\HoneyPot_Manager\HoneyPot_
 c:\users\johnny\documents\visual studio 2013\Projects\HoneyPot_Manager\HoneyPot_Manager\obj\Debug\HoneyPot_Manager.exe
 c:\users\johnny\documents\visual studio 2013\Projects\HoneyPot_Manager\HoneyPot_Manager\obj\Debug\HoneyPot_Manager.pdb
 C:\Users\Johnny\Documents\Visual Studio 2013\Projects\HoneyPot_Manager\HoneyPot_Manager\obj\Debug\HoneyPot_Manager.AddIP.resources
+Y:\开发\HoneyPot\HoneyPot_Manager\HoneyPot_Manager\bin\Debug\HoneyPot_Manager.exe.config
+Y:\开发\HoneyPot\HoneyPot_Manager\HoneyPot_Manager\obj\Debug\HoneyPot_Manager.exe
+Y:\开发\HoneyPot\HoneyPot_Manager\HoneyPot_Manager\obj\Debug\HoneyPot_Manager.pdb
+Y:\开发\HoneyPot\HoneyPot_Manager\HoneyPot_Manager\bin\Debug\HoneyPot_Manager.exe
+Y:\开发\HoneyPot\HoneyPot_Manager\HoneyPot_Manager\bin\Debug\HoneyPot_Manager.pdb
+Y:\开发\HoneyPot\HoneyPot_Manager\HoneyPot_Manager\obj\Debug\HoneyPot_Manager.csprojResolveAssemblyReference.cache
+Y:\开发\HoneyPot\HoneyPot_Manager\HoneyPot_Manager\obj\Debug\HoneyPot_Manager.AddIP.resources
+Y:\开发\HoneyPot\HoneyPot_Manager\HoneyPot_Manager\obj\Debug\HoneyPot_Manager.Manager.resources
+Y:\开发\HoneyPot\HoneyPot_Manager\HoneyPot_Manager\obj\Debug\HoneyPot_Manager.Properties.Resources.resources
+Y:\开发\HoneyPot\HoneyPot_Manager\HoneyPot_Manager\obj\Debug\HoneyPot_Manager.csproj.GenerateResource.Cache

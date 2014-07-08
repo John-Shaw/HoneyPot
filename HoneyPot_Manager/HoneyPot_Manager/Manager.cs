@@ -21,6 +21,8 @@ namespace HoneyPot_Manager
             InitializeComponent();
             player = new System.Media.SoundPlayer(Properties.Resources.ALARM3);
 
+            MessageBox.Show(" test Github sync branc,if you see it,it done");
+
             //#region 测试用
             //string[] splieStrings = { "[Stop]" };
             //string[] Logs = Properties.Resources.logtest.Split(splieStrings, System.StringSplitOptions.RemoveEmptyEntries);
