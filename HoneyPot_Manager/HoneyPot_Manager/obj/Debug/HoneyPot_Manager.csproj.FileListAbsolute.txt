@@ -1,0 +1,10 @@
+c:\users\johnny\documents\visual studio 2013\Projects\HoneyPot_Manager\HoneyPot_Manager\bin\Debug\HoneyPot_Manager.exe.config
+c:\users\johnny\documents\visual studio 2013\Projects\HoneyPot_Manager\HoneyPot_Manager\bin\Debug\HoneyPot_Manager.exe
+c:\users\johnny\documents\visual studio 2013\Projects\HoneyPot_Manager\HoneyPot_Manager\bin\Debug\HoneyPot_Manager.pdb
+c:\users\johnny\documents\visual studio 2013\Projects\HoneyPot_Manager\HoneyPot_Manager\obj\Debug\HoneyPot_Manager.csprojResolveAssemblyReference.cache
+c:\users\johnny\documents\visual studio 2013\Projects\HoneyPot_Manager\HoneyPot_Manager\obj\Debug\HoneyPot_Manager.Manager.resources
+c:\users\johnny\documents\visual studio 2013\Projects\HoneyPot_Manager\HoneyPot_Manager\obj\Debug\HoneyPot_Manager.Properties.Resources.resources
+c:\users\johnny\documents\visual studio 2013\Projects\HoneyPot_Manager\HoneyPot_Manager\obj\Debug\HoneyPot_Manager.csproj.GenerateResource.Cache
+c:\users\johnny\documents\visual studio 2013\Projects\HoneyPot_Manager\HoneyPot_Manager\obj\Debug\HoneyPot_Manager.exe
+c:\users\johnny\documents\visual studio 2013\Projects\HoneyPot_Manager\HoneyPot_Manager\obj\Debug\HoneyPot_Manager.pdb
+C:\Users\Johnny\Documents\Visual Studio 2013\Projects\HoneyPot_Manager\HoneyPot_Manager\obj\Debug\HoneyPot_Manager.AddIP.resources

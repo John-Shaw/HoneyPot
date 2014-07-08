@@ -1,0 +1,27 @@
+14-4-27 13:19:15.480 Google Chrome Helper[408]: CarbonCore:
+[Stop]
+bad log: declare @q nvarchar (200) select @q = 0x770061006900740066006F0072002000640065006C00610079002000270030003A0030003A0031003000270000 exec(@q)
+[Stop]
+normal log
+[Stop]
+normal log
+[Stop]
+bad log: xp_cmdshell
+[Stop]
+<form method=¡°POST¡± action=¡°&lt;? echo $PHP_SELF; ?>¡°&gt; 
+<input type=¡°text¡± name=¡°search¡±><br> 
+<input type=¡°submit¡± value=¡°Search¡±> 
+</form> 
+<?php
+¡­¡­¡­
+SELECT * FROM users WHERE username LIKE ¡®%$search%¡¯ ORDER BY username
+¡­¡­¡­
+?>
+[Stop]
+<input type="text" name="address1" value="" onfocus="alert(document.cookie)">
+[Stop]
+><script>alert(document.cookie)</script> 
+=¡¯><script>alert(document.cookie)</script> 
+<script>alert(document.cookie)</script> 
+<script>alert(vulnerable)</script> 
+[Stop]

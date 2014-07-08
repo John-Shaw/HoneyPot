@@ -1,0 +1,10 @@
+C:\Users\Johnny\documents\visual studio 2013\Projects\HoneyPot_Watcher\HoneyPot_Watcher\bin\Release\HoneyPot_Watcher.exe.config
+C:\Users\Johnny\documents\visual studio 2013\Projects\HoneyPot_Watcher\HoneyPot_Watcher\bin\Release\HoneyPot_Watcher.exe
+C:\Users\Johnny\documents\visual studio 2013\Projects\HoneyPot_Watcher\HoneyPot_Watcher\bin\Release\HoneyPot_Watcher.pdb
+C:\Users\Johnny\documents\visual studio 2013\Projects\HoneyPot_Watcher\HoneyPot_Watcher\obj\Release\HoneyPot_Watcher.csprojResolveAssemblyReference.cache
+C:\Users\Johnny\documents\visual studio 2013\Projects\HoneyPot_Watcher\HoneyPot_Watcher\obj\Release\HoneyPot_Watcher.SettingsForm.resources
+C:\Users\Johnny\documents\visual studio 2013\Projects\HoneyPot_Watcher\HoneyPot_Watcher\obj\Release\HoneyPot_Watcher.Watcher.resources
+C:\Users\Johnny\documents\visual studio 2013\Projects\HoneyPot_Watcher\HoneyPot_Watcher\obj\Release\HoneyPot_Watcher.Properties.Resources.resources
+C:\Users\Johnny\documents\visual studio 2013\Projects\HoneyPot_Watcher\HoneyPot_Watcher\obj\Release\HoneyPot_Watcher.csproj.GenerateResource.Cache
+C:\Users\Johnny\documents\visual studio 2013\Projects\HoneyPot_Watcher\HoneyPot_Watcher\obj\Release\HoneyPot_Watcher.exe
+C:\Users\Johnny\documents\visual studio 2013\Projects\HoneyPot_Watcher\HoneyPot_Watcher\obj\Release\HoneyPot_Watcher.pdb

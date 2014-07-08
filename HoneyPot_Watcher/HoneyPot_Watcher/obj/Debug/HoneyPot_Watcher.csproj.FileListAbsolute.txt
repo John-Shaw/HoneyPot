@@ -1,0 +1,11 @@
+c:\users\johnny\documents\visual studio 2013\Projects\HoneyPot_Watcher\HoneyPot_Watcher\bin\Debug\HoneyPot_Watcher.exe.config
+C:\Users\Johnny\documents\visual studio 2013\Projects\HoneyPot_Watcher\HoneyPot_Watcher\bin\Debug\HoneyPot_Watcher.exe
+C:\Users\Johnny\documents\visual studio 2013\Projects\HoneyPot_Watcher\HoneyPot_Watcher\bin\Debug\HoneyPot_Watcher.pdb
+C:\Users\Johnny\documents\visual studio 2013\Projects\HoneyPot_Watcher\HoneyPot_Watcher\obj\Debug\HoneyPot_Watcher.csprojResolveAssemblyReference.cache
+C:\Users\Johnny\documents\visual studio 2013\Projects\HoneyPot_Watcher\HoneyPot_Watcher\obj\Debug\HoneyPot_Watcher.Watcher.resources
+C:\Users\Johnny\documents\visual studio 2013\Projects\HoneyPot_Watcher\HoneyPot_Watcher\obj\Debug\HoneyPot_Watcher.Properties.Resources.resources
+C:\Users\Johnny\documents\visual studio 2013\Projects\HoneyPot_Watcher\HoneyPot_Watcher\obj\Debug\HoneyPot_Watcher.csproj.GenerateResource.Cache
+C:\Users\Johnny\documents\visual studio 2013\Projects\HoneyPot_Watcher\HoneyPot_Watcher\obj\Debug\HoneyPot_Watcher.exe
+C:\Users\Johnny\documents\visual studio 2013\Projects\HoneyPot_Watcher\HoneyPot_Watcher\obj\Debug\HoneyPot_Watcher.pdb
+C:\Users\Johnny\documents\visual studio 2013\Projects\HoneyPot_Watcher\HoneyPot_Watcher\obj\Debug\HoneyPot_Watcher.SettingsForm.resources
+C:\Users\Johnny\documents\visual studio 2013\Projects\HoneyPot_Watcher\HoneyPot_Watcher\bin\Debug\MySQLDriverCS.dll
