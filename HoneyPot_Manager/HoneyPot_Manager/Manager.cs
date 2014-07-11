@@ -19,6 +19,10 @@ namespace HoneyPot_Manager
         public Manager()
         {
             InitializeComponent();
+
+
+            ListViewItem lvi = new ListViewItem();
+
             
             #region 测试用
 
@@ -154,7 +158,7 @@ namespace HoneyPot_Manager
 
                 conn = new MySqlConnection(MyConnectionString);
                 conn.Open();
-                string query = string.Format("select idhackersInfo,HackersIP, HackersDomain,HackersDisk,HackersName from hackersInfo where id > {0} order by id limit 20", id);
+                string query = string.Format("select idhackersInfo,HackersIP, HackersDomain,HackersDiskNum,HackersName from hackersInfo where id > {0} order by id limit 20", id);
 
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -170,11 +174,11 @@ namespace HoneyPot_Manager
    
 
                     lvi.SubItems.AddRange(new string[] {                                                       
-                                                            reader["sourceIP"].ToString(),
-                                                            
-                                                            reader["content"].ToString()
+                                                            reader["HackersName"].ToString(),
+                                                            reader["HackersDomain"].ToString(),
+                                                            reader["HackersDiskNum"].ToString()
                                                        });
-                    listView1.Items.Add(lvi);
+                    listView4.Items.Add(lvi);
                 }
 
                 _CurrentIDFromHacker = (int)reader["idhackersInfo"];
