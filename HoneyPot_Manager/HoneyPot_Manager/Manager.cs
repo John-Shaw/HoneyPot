@@ -19,11 +19,13 @@ namespace HoneyPot_Manager
         public Manager()
         {
             InitializeComponent();
-            player = new System.Media.SoundPlayer(Properties.Resources.ALARM3);
+            
+            #region 测试用
 
+            //player = new System.Media.SoundPlayer(Properties.Resources.ALARM3);
             //MessageBox.Show(" test Github sync branc,if you see it,it done");
 
-            //#region 测试用
+            
             //string[] splieStrings = { "[Stop]" };
             //string[] Logs = Properties.Resources.logtest.Split(splieStrings, System.StringSplitOptions.RemoveEmptyEntries);
 
@@ -36,16 +38,45 @@ namespace HoneyPot_Manager
 
             //}
 
-            //#endregion
+            #endregion
         }
 
+
+
+
+        #region 所有实例变量
         private MySqlConnection conn = null;
+
+        /// <summary>
+        /// 数据库连接字符串
+        /// </summary>
         private string MyConnectionString = "server=192.168.0.109;uid=honeypot;pwd=qweewq;database=log;pooling=true";
 
         private int _CurrentID = 0;
-        private int _LastID = 0;
+        private int _CurrentIDFromHacker = 0;
+
+        private string[] XSS = Properties.Resources.XSS关键词.Split('\n');
+        private static string[] sql_normal = Properties.Resources.SQL_普通注入.Split('\n');
+        private static string[] sql_attack = Properties.Resources.SQL_攻击存储过程.Split('\n');
+        private string _sqlInjection_Commen = "SQL普通注入 ";
+        private string _sqlInjection_Proc = "SQL攻击存储过程 ";
+
+        private string _POST = "POST提交 ";
+        private string _GET = "GET提交 ";
+
+        private string XSS_cookie = "document.cookie";
+        private string XSS_fish = "document.forms[0]";
+
+        string[] oneWordShell = { "request", "eval", "exectue" };
+        string[] fileOpre = { "fopen", "fclose", "fgets" };
+
+        private System.Media.SoundPlayer player;
+
+        #endregion
 
 
+
+        #region 与数据库的信息交互
         /// <summary>
         /// 返回最新ID
         /// </summary>
@@ -57,7 +88,7 @@ namespace HoneyPot_Manager
             {
                 conn = new MySqlConnection(MyConnectionString);
                 conn.Open();
-                string query = string.Format("select id from http_log order by id desc limit 1");
+                string query = string.Format("select id from http_log order by id desc limit 1"); 
                 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
 
@@ -74,6 +105,93 @@ namespace HoneyPot_Manager
             return lastid;
         }
 
+        /// <summary>
+        /// 返回最新ID
+        /// </summary>
+        /// <returns></returns>
+        private int getLastIDFromHacker()
+        {
+            int lastid = 0;
+            try
+            {
+                conn = new MySqlConnection(MyConnectionString);
+                conn.Open();
+                string query = string.Format("select idhackersInfo from hackersInfo order by id desc limit 1");
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                lastid = (int)cmd.ExecuteScalar();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return lastid;
+        }
+
+
+        /// <summary>
+        /// 读取反渗透信息
+        /// </summary>
+        /// <param name="id"></param>
+        private void readHackersInfo(int id)
+        {
+            int lastid = getLastID();
+
+            if (lastid <= _CurrentIDFromHacker)
+            {
+                return;
+            }
+
+            MySqlDataReader reader = null;
+
+            try
+            {
+
+                conn = new MySqlConnection(MyConnectionString);
+                conn.Open();
+                string query = string.Format("select idhackersInfo,HackersIP, HackersDomain,HackersDisk,HackersName from hackersInfo where id > {0} order by id limit 20", id);
+
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                reader = cmd.ExecuteReader();
+
+
+                while (reader.Read())
+                {
+
+                    ListViewItem lvi = new ListViewItem();
+
+                    lvi.Text = reader["HackersIP"].ToString();
+   
+
+                    lvi.SubItems.AddRange(new string[] {                                                       
+                                                            reader["sourceIP"].ToString(),
+                                                            
+                                                            reader["content"].ToString()
+                                                       });
+                    listView1.Items.Add(lvi);
+                }
+
+                _CurrentIDFromHacker = (int)reader["idhackersInfo"];
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                reader.Close();
+                conn.Close();
+            }
+        }
+
 
         /// <summary>
         /// 从服务器数据库读取日志
@@ -81,9 +199,9 @@ namespace HoneyPot_Manager
         /// <param name="id"></param>
         private void readLogs(int id)
         {
-            _LastID = getLastID();
+            int lastid = getLastID();
 
-            if(_LastID <= _CurrentID)
+            if(lastid <= _CurrentID)
             {
                 return;
             }
@@ -168,8 +286,10 @@ namespace HoneyPot_Manager
         }
 
 
+        #endregion
 
 
+        #region 各种控件注册事件
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             timer1.Start();
@@ -185,22 +305,21 @@ namespace HoneyPot_Manager
             timer1.Stop();
         }
 
+        private void toolStripButton6_Click(object sender, EventArgs e)
+        {
+            timer2.Start();
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            readHackersInfo(_CurrentIDFromHacker);
+        }
 
 
-        private string[] XSS = Properties.Resources.XSS关键词.Split('\n');
-        private static string[] sql_normal = Properties.Resources.SQL_普通注入.Split('\n');
-        private static string[] sql_attack = Properties.Resources.SQL_攻击存储过程.Split('\n');
-        private string _sqlInjection_Commen = "SQL普通注入 ";
-        private string _sqlInjection_Proc = "SQL攻击存储过程 ";
+        #endregion
+
         
-        private string _POST = "POST提交 ";
-        private string _GET = "GET提交 ";
-
-        private System.Media.SoundPlayer player;
-
-
-        #region  分析部分
-
+        #region  日志分析部分
 
         private string log_analysis(string log)
         {
@@ -266,8 +385,7 @@ namespace HoneyPot_Manager
         }
 
 
-        private string XSS_cookie = "document.cookie";
-        private string XSS_fish = "document.forms[0]";
+
         private string XSS_Attack(string log)
         {
             string temp = "";
@@ -292,9 +410,6 @@ namespace HoneyPot_Manager
             return "";
         }
 
-
-        string[] oneWordShell = {"request", "eval", "exectue"};
-        string[] fileOpre = { "fopen", "fclose", "fgets" };
 
         private string upLoadShell(string log)
         {
@@ -332,8 +447,7 @@ namespace HoneyPot_Manager
 
         #endregion 
         
-
-        
+  
         #region 内网管理
 
 
@@ -484,5 +598,7 @@ namespace HoneyPot_Manager
         }
 
         #endregion
+
+        
     }
 }
