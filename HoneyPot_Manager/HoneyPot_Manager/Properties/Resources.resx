@@ -136,9 +136,6 @@
   <data name="ALARM3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ALARM3.WAV;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="sql_xss关键词" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sql_xss关键词.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
   <data name="SQL_攻击存储过程" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SQL_攻击存储过程.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;gb2312</value>
   </data>
@@ -150,5 +147,8 @@
   </data>
   <data name="_20140706065133215_easyicon_net_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\20140706065133215_easyicon_net_128.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="XSS关键词" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\XSS关键词.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>

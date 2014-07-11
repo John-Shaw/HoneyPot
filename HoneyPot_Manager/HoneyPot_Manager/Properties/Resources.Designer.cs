@@ -155,24 +155,6 @@ namespace HoneyPot_Manager.Properties {
         }
         
         /// <summary>
-        ///   查找类似 &apos;;alert(String.fromCharCode(88,83,83))//\&apos;;alert(String.fromCharCode(88,83,83))//&quot;;alert(String.fromCharCode(88,83,83))//\&quot;;alert(String.fromCharCode&lt;script&gt;alert(&apos;xss&apos;)&lt;/script&gt;
-        /////--&gt;&lt;/SCRIPT&gt;&quot;&gt;&apos;&gt;&lt;SCRIPT&gt;alert(String.fromCharCode(88,83,83))&lt;/SCRIPT&gt;
-        ///&apos;&apos;;!--&quot;&lt;XSS&gt;=&amp;{()}
-        ///&lt;SCRIPT SRC=http://ha.ckers.org/xss.js&gt;&lt;/SCRIPT&gt;
-        ///&lt;IMG SRC=&quot;javascript:alert(&apos;XSS&apos;);&quot;&gt;
-        ///&lt;IMG SRC=javascript:alert(&apos;XSS&apos;)&gt;
-        ///&lt;IMG SRC=javascrscriptipt:alert(&apos;XSS&apos;)&gt;
-        ///&lt;IMG SRC=JaVaScRiPt:alert(&apos;XSS&apos;)&gt;
-        ///&lt;IMG &quot;&quot;&quot;&gt;&lt;SCRIPT&gt;alert(&quot;XSS&quot;)&lt;/SCRIPT&gt;&quot;&gt;
-        ///&lt;IMG SR [字符串的其余部分被截断]&quot;; 的本地化字符串。
-        /// </summary>
-        internal static string sql_xss关键词 {
-            get {
-                return ResourceManager.GetString("sql_xss关键词", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   查找类似 RECONFIGURE
         ///xp_cmdshell
         ///sp_configure
@@ -214,6 +196,24 @@ namespace HoneyPot_Manager.Properties {
         internal static string SQL_普通注入 {
             get {
                 return ResourceManager.GetString("SQL_普通注入", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 &apos;;alert(String.fromCharCode(88,83,83))//\&apos;;alert(String.fromCharCode(88,83,83))//&quot;;alert(String.fromCharCode(88,83,83))//\&quot;;alert(String.fromCharCode&lt;script&gt;alert(&apos;xss&apos;)&lt;/script&gt;
+        /////--&gt;&lt;/SCRIPT&gt;&quot;&gt;&apos;&gt;&lt;SCRIPT&gt;alert(String.fromCharCode(88,83,83))&lt;/SCRIPT&gt;
+        ///&apos;&apos;;!--&quot;&lt;XSS&gt;=&amp;{()}
+        ///&lt;SCRIPT SRC=http://ha.ckers.org/xss.js&gt;&lt;/SCRIPT&gt;
+        ///&lt;IMG SRC=&quot;javascript:alert(&apos;XSS&apos;);&quot;&gt;
+        ///&lt;IMG SRC=javascript:alert(&apos;XSS&apos;)&gt;
+        ///&lt;IMG SRC=javascrscriptipt:alert(&apos;XSS&apos;)&gt;
+        ///&lt;IMG SRC=JaVaScRiPt:alert(&apos;XSS&apos;)&gt;
+        ///&lt;IMG &quot;&quot;&quot;&gt;&lt;SCRIPT&gt;alert(&quot;XSS&quot;)&lt;/SCRIPT&gt;&quot;&gt;
+        ///&lt;IMG SR [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        internal static string XSS关键词 {
+            get {
+                return ResourceManager.GetString("XSS关键词", resourceCulture);
             }
         }
     }

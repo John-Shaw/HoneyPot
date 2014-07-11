@@ -29,9 +29,9 @@ namespace HoneyPot_Manager
         
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text != "")
+            if (textBox1.Text != "" && textBox2.Text != "" && textBox3.Text != "")
             {
-                _manager.addIP(_type, textBox1.Text);
+                _manager.addIP(_type, textBox1.Text,textBox2.Text,textBox3.Text);
                 this.Close();
             }
             else

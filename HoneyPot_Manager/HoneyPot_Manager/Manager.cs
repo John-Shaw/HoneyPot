@@ -21,7 +21,7 @@ namespace HoneyPot_Manager
             InitializeComponent();
             player = new System.Media.SoundPlayer(Properties.Resources.ALARM3);
 
-            MessageBox.Show(" test Github sync branc,if you see it,it done");
+            //MessageBox.Show(" test Github sync branc,if you see it,it done");
 
             //#region 测试用
             //string[] splieStrings = { "[Stop]" };
@@ -187,18 +187,17 @@ namespace HoneyPot_Manager
 
 
 
-        private string[] sql_xss = Properties.Resources.sql_xss关键词.Split('\n');
+        private string[] XSS = Properties.Resources.XSS关键词.Split('\n');
         private static string[] sql_normal = Properties.Resources.SQL_普通注入.Split('\n');
         private static string[] sql_attack = Properties.Resources.SQL_攻击存储过程.Split('\n');
         private string _sqlInjection_Commen = "SQL普通注入 ";
         private string _sqlInjection_Proc = "SQL攻击存储过程 ";
-        //private string _XSS = "XSS攻击";
+        
         private string _POST = "POST提交 ";
         private string _GET = "GET提交 ";
 
         private System.Media.SoundPlayer player;
 
-        //private string _Temp = "000";
 
         #region  分析部分
 
@@ -208,7 +207,8 @@ namespace HoneyPot_Manager
             string retlog = "";
             retlog += SQL_injection1(log);
             retlog += SQL_injection2(log);
-            retlog += XSS(log);
+            retlog += XSS_Attack(log);
+            retlog += upLoadShell(log);
             return retlog;
         }
 
@@ -268,29 +268,68 @@ namespace HoneyPot_Manager
 
         private string XSS_cookie = "document.cookie";
         private string XSS_fish = "document.forms[0]";
-        private string XSS(string log)
+        private string XSS_Attack(string log)
         {
             string temp = "";
-            if (sql_xss.Any(log.Contains))
+            if (XSS.Any(log.Contains))
             {
 
                 if (log.Contains(XSS_cookie))
                 {
-                    temp = "XSS攻击 cookie攻击 ";
+                    temp = "XSS注入 cookie攻击 ";
                 }
                 else if (log.Contains(XSS_fish))
                 {
-                    temp = "XSS攻击 跨站钓鱼攻击";
+                    temp = "XSS注入 跨站钓鱼攻击";
                 }
                 else
                 {
-                    temp = "XSS攻击 ";
+                    temp = "XSS注入 ";
                 }
                 
                 return temp;
             }
             return "";
         }
+
+
+        string[] oneWordShell = {"request", "eval", "exectue"};
+        string[] fileOpre = { "fopen", "fclose", "fgets" };
+
+        private string upLoadShell(string log)
+        {
+            string temp = "";
+            if (log.Length <= 30)
+            {
+                if(oneWordShell.Any(log.Contains))
+                {
+                    temp = "一句话木马";
+                    return temp;
+                }
+                
+            }
+            else
+            {
+                temp = "上传shell攻击 ";
+                if(log.Contains("upload"))
+                {
+                    temp += "上传";
+                    return temp;
+                }
+                if (fileOpre.Any(log.Contains))
+                {
+                    temp += "文件操作";
+                    return temp;
+                }
+                if (log.Contains("exec"))
+                {
+                    temp += "命令执行";
+                    return temp;
+                }
+            }
+            return "";
+        }
+
         #endregion 
         
 
@@ -368,17 +407,17 @@ namespace HoneyPot_Manager
 
         }
 
-        public void addIP(string type,string ip)
+        public void addIP(string type, string ip, string destIP, string destinationHoneypotIP)
         {
             if(type == "addIP")
             {
-                string postdata = "Operation=addIP&IPAddr=" + ip + "&destIP=192.168.12.2";
+                string postdata = "Operation=addIP&IPAddr=" + ip + "&destIP=" + destIP + "&destinationHoneypotIP=" + destinationHoneypotIP;
 
                 Requst(postdata);
             }
             if(type == "addProtected")
             {
-                string postdata = "Operation=addProtected&gwIP=" + ip + "&nic=ens38" + "&destIP=192.168.11.3";
+                string postdata = "Operation=addProtected&gwIP=" + ip + "&nic=ens38" + "&destIP" + destIP + "&destinationHoneypotIP=" + destinationHoneypotIP; ;
 
                 Requst(postdata);
             }
