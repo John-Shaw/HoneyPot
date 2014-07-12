@@ -120,7 +120,7 @@ namespace HoneyPot_Manager
             {
                 conn = new MySqlConnection(MyConnectionString);
                 conn.Open();
-                string query = string.Format("select idhackersInfo from hackersInfo order by id desc limit 1");
+                string query = string.Format("select idhackersInfo from hackersInfo order by idhackersInfo desc limit 1");
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
 
@@ -158,7 +158,7 @@ namespace HoneyPot_Manager
 
                 conn = new MySqlConnection(MyConnectionString);
                 conn.Open();
-                string query = string.Format("select idhackersInfo,HackersIP, HackersDomain,HackersDiskNum,HackersName from hackersInfo where id > {0} order by id limit 20", id);
+                string query = string.Format("select idhackersInfo,HackersIP, HackersDomain,HackersDiskNum,HackersName from hackersInfo where idhackersInfo > {0} order by idhackersInfo limit 20", id);
 
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -167,20 +167,22 @@ namespace HoneyPot_Manager
 
                 while (reader.Read())
                 {
+                    if (reader[0] != DBNull.Value)
+                    {
+                        ListViewItem lvi = new ListViewItem();
 
-                    ListViewItem lvi = new ListViewItem();
+                        lvi.Text = reader["HackersIP"].ToString();
 
-                    lvi.Text = reader["HackersIP"].ToString();
-   
 
-                    lvi.SubItems.AddRange(new string[] {                                                       
+                        lvi.SubItems.AddRange(new string[] {                                                       
                                                             reader["HackersName"].ToString(),
                                                             reader["HackersDomain"].ToString(),
                                                             reader["HackersDiskNum"].ToString()
                                                        });
-                    listView4.Items.Add(lvi);
-                }
+                        listView4.Items.Add(lvi);
 
+                    }
+                }
                 _CurrentIDFromHacker = (int)reader["idhackersInfo"];
 
 
@@ -307,6 +309,7 @@ namespace HoneyPot_Manager
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             timer1.Stop();
+            timer2.Stop();
         }
 
         private void toolStripButton6_Click(object sender, EventArgs e)
@@ -527,18 +530,26 @@ namespace HoneyPot_Manager
 
         public void addIP(string type, string ip, string destIP, string destinationHoneypotIP)
         {
+
+            string postdata="";
             if(type == "addIP")
             {
-                string postdata = "Operation=addIP&IPAddr=" + ip + "&destIP=" + destIP + "&destinationHoneypotIP=" + destinationHoneypotIP;
+               postdata = "Operation=addIP&IPAddr=" + ip + "&destIP=" + destIP + "&destinationHoneypotIP=" + destinationHoneypotIP;
 
-                Requst(postdata);
+                
+
+                listView2.Items.Add(new ListViewItem(new string[] { ip, destIP, destinationHoneypotIP }));
             }
             if(type == "addProtected")
             {
-                string postdata = "Operation=addProtected&gwIP=" + ip + "&nic=ens38" + "&destIP" + destIP + "&destinationHoneypotIP=" + destinationHoneypotIP; ;
+                postdata = "Operation=addProtected&gwIP=" + ip + "&nic=ens38" + "&destIP" + destIP + "&destinationHoneypotIP=" + destinationHoneypotIP; ;
 
-                Requst(postdata);
+                
+
+                listView3.Items.Add(new ListViewItem(new string[] { ip, destIP }));
             }
+
+            //Requst(postdata);
         }
 
         
@@ -553,21 +564,18 @@ namespace HoneyPot_Manager
             {
                 selectIP = lvi.SubItems[0].Text;
                 destIP = lvi.SubItems[1].Text;
+
+
+                listView2.Items.Remove(lvi);
             }
             string postdata = "Operation=removeIP&IPAddr=" + selectIP + "&destIP=" + destIP;
 
-            Requst(postdata);
+            //Requst(postdata);
+
+            
+
         }
 
-        
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            listView2.Items.Clear();
-            string postdata = "Operation=queryEnemyIP";
-
-            RequstWithRespon(postdata, listView2);
-        }
 
         private void button6_Click(object sender, EventArgs e)
         {
@@ -590,16 +598,10 @@ namespace HoneyPot_Manager
             }
 
             string postdata = "Operation=removeProtected&gwIP=" + selectIP + "&nic=ens38" + "&destIP=" + destIP;
-            Requst(postdata);
+            //Requst(postdata);
         }
 
-        private void button7_Click(object sender, EventArgs e)
-        {
-            listView3.Items.Clear();
-            string postdata = "Operation=queryEnemyIP";
-
-            RequstWithRespon(postdata, listView3);
-        }
+        
 
         #endregion
 
