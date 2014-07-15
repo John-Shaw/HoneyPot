@@ -71,7 +71,8 @@ namespace HoneyPot_Manager
         private string XSS_cookie = "document.cookie";
         private string XSS_fish = "document.forms[0]";
 
-        string[] oneWordShell = { "request", "eval", "exectue" };
+        string[] oneWordShell = { "request", "eval", "exectue", "POST[value]);?>" };
+        string[] shellKeys_1 = {"uploads","upload","Uploads","Upload","submit","Submit"};
         string[] fileOpre = { "fopen", "fclose", "fgets" };
 
         private System.Media.SoundPlayer player;
@@ -421,34 +422,41 @@ namespace HoneyPot_Manager
         private string upLoadShell(string log)
         {
             string temp = "";
-            if (log.Length <= 30)
+            if(shellKeys_1.Any(log.Contains))
             {
-                if(oneWordShell.Any(log.Contains))
+                if(fileOpre.Any(log.Contains) || log.Contains("exec"))
                 {
-                    temp = "一句话木马";
-                    return temp;
+                    if (log.Length <= 24)
+                    {
+                        if (oneWordShell.Any(log.Contains))
+                        {
+                            temp = "一句话木马";
+                            return temp;
+                        }
+
+                    }
+                    else
+                    {
+                        temp = "上传shell攻击 ";
+                        if (log.Contains("upload"))
+                        {
+                            temp += "上传";
+                            return temp;
+                        }
+                        if (fileOpre.Any(log.Contains))
+                        {
+                            temp += "文件操作";
+                            return temp;
+                        }
+                        if (log.Contains("exec"))
+                        {
+                            temp += "命令执行";
+                            return temp;
+                        }
+                    }
                 }
-                
             }
-            else
-            {
-                temp = "上传shell攻击 ";
-                if(log.Contains("upload"))
-                {
-                    temp += "上传";
-                    return temp;
-                }
-                if (fileOpre.Any(log.Contains))
-                {
-                    temp += "文件操作";
-                    return temp;
-                }
-                if (log.Contains("exec"))
-                {
-                    temp += "命令执行";
-                    return temp;
-                }
-            }
+            
             return "";
         }
 
@@ -538,17 +546,18 @@ namespace HoneyPot_Manager
 
                 
 
-                listView2.Items.Add(new ListViewItem(new string[] { ip, destIP, destinationHoneypotIP }));
+               listView2.Items.Add(new ListViewItem(new string[] { ip, destIP, destinationHoneypotIP }));
             }
             if(type == "addProtected")
             {
                 postdata = "Operation=addProtected&gwIP=" + ip + "&nic=ens38" + "&destIP" + destIP + "&destinationHoneypotIP=" + destinationHoneypotIP; ;
 
-                
 
-                listView3.Items.Add(new ListViewItem(new string[] { ip, destIP }));
+
+                listView3.Items.Add(new ListViewItem(new string[] { ip, destIP, destinationHoneypotIP }));
             }
 
+            //下面是http请求的，看情况修改，我这里为了测试方便全注释掉了
             //Requst(postdata);
         }
 
@@ -595,9 +604,13 @@ namespace HoneyPot_Manager
             {
                 selectIP = lvi.SubItems[0].Text;
                 destIP = lvi.SubItems[1].Text;
+
+
+                listView3.Items.Remove(lvi);
             }
 
             string postdata = "Operation=removeProtected&gwIP=" + selectIP + "&nic=ens38" + "&destIP=" + destIP;
+
             //Requst(postdata);
         }
 

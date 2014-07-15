@@ -50,6 +50,7 @@
             this.listView2 = new System.Windows.Forms.ListView();
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.listView4 = new System.Windows.Forms.ListView();
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -65,7 +66,7 @@
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -178,7 +179,8 @@
             // 
             this.listView3.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader6,
-            this.columnHeader7});
+            this.columnHeader7,
+            this.columnHeader14});
             this.listView3.FullRowSelect = true;
             this.listView3.GridLines = true;
             this.listView3.Location = new System.Drawing.Point(250, 12);
@@ -191,12 +193,12 @@
             // columnHeader6
             // 
             this.columnHeader6.Text = "对外IP地址";
-            this.columnHeader6.Width = 150;
+            this.columnHeader6.Width = 127;
             // 
             // columnHeader7
             // 
             this.columnHeader7.Text = "对内IP地址";
-            this.columnHeader7.Width = 198;
+            this.columnHeader7.Width = 119;
             // 
             // button6
             // 
@@ -267,6 +269,11 @@
             // 
             this.columnHeader5.Text = "入侵者访问IP";
             this.columnHeader5.Width = 116;
+            // 
+            // columnHeader13
+            // 
+            this.columnHeader13.Text = "蜜罐IP";
+            this.columnHeader13.Width = 100;
             // 
             // tabPage3
             // 
@@ -391,10 +398,10 @@
             this.timer2.Interval = 1000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // columnHeader13
+            // columnHeader14
             // 
-            this.columnHeader13.Text = "蜜罐IP";
-            this.columnHeader13.Width = 100;
+            this.columnHeader14.Text = "蜜罐IP";
+            this.columnHeader14.Width = 102;
             // 
             // Manager
             // 
@@ -457,6 +464,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButton6;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.ColumnHeader columnHeader13;
+        private System.Windows.Forms.ColumnHeader columnHeader14;
     }
 }
 
